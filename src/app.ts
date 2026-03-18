@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import authRouter from "./router/auth.rotuer.ts";
+import { notFound } from "./middleware/not-found.ts";
+import { globalErrorHandler } from "./middleware/global-error-handler.ts";
+import authRouter from "./router/auth.router.ts";
 
 const createApp = () => {
     const app = express();
@@ -17,6 +19,9 @@ const createApp = () => {
     });
 
     app.use("/api/auth", authRouter);
+
+    app.use(notFound);
+    app.use(globalErrorHandler);
 
     return app;
 }
