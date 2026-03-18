@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import authRouter from "./router/auth.rotuer.ts";
 
 const createApp = () => {
     const app = express();
@@ -14,6 +15,8 @@ const createApp = () => {
     app.get("/api/health", (req, res) => {
         res.json({ success: true, message: "Server is running" });
     });
+
+    app.use("/api/auth", authRouter);
 
     return app;
 }
