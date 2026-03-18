@@ -12,7 +12,7 @@ export interface AuthRequest extends Request {
     user?: IJWTUserPayload;
 }
 
-export interface APIResponse<T> {
+export interface APIResponse<T = unknown> {
     success: boolean;
     message: string;
     data?: T;
